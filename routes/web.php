@@ -21,4 +21,23 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+// Route::get('/posts', function() {
+//     return view('posts');
+// });
+
+Route::get('posts/{post}', function ($slug) {
+
+    $path = __DIR__ . "/../resources/posts/{$slug}.html";
+
+    if(!file_exists($path)){
+        abort(404);
+    }
+
+    $post = file_get_contents($path);
+
+    return view('post', [
+        'post' => $post
+    ]);
+})->where('posts', '[A-z_\-]+');
+
 require __DIR__.'/auth.php';

@@ -22,13 +22,9 @@
                     <a href="/posts/<?= $post->slug ?>">
                         <?= $post->title; ?>
                     </a>
-
                 </h1>
-
                 <div>
-                    <p>
-                        <?= $post->excerpt; ?>
-                    </p>
+                    <?= $post->body; ?>
                 </div>
             </article>
         <?php endforeach ?>

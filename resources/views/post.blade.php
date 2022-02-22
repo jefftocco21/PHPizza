@@ -16,8 +16,12 @@
         <link rel="stylesheet" href="public/app.css">
     </head>
     <body>
-        <article class="mx-auto">
-            <?= $post; ?>
+        <article class="container mx-auto">
+            <h1><?= $post->title; ?></h1>
+
+            <div>
+                <?= $post->body; ?>
+            </div>
         </article>
 
         <a href="/">Go Back</a>

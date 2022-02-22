@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
 use App\Models\Post;
 
 /*
@@ -22,7 +23,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/posts', function() {
+Route::get('/posts', function(){
+
     return view('posts',[
         'posts' => Post::all()
     ]);

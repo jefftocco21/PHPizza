@@ -16,10 +16,10 @@
         <link rel="stylesheet" href="public/app.css">
     </head>
     <body>
-        <article class="mx-auto">
-            <?= $post; ?>
-        </article>
-
-        <a href="/">Go Back</a>
+        <?php foreach ($posts as $post) : ?>
+            <article>
+                <?= $post; ?>
+            </article>
+        <?php endforeach ?>
     </body>
 </html>

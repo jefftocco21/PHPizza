@@ -44,11 +44,18 @@ class Post
 
     public static function find($slug){
         //of all blog posts find the one with slug that matches
-        $posts = static::all();
+        return static::all()->firstWhere('slug', $slug);
+    }
 
-        return $posts->firstWhere('slug', $slug);
+    public static function findOrFail($slug){
+        //fail if a post was not found
+        $post = static::find($slug);
 
-        //dd($posts);
+        if(! $post){
+            abort(404);
+        }
+
+        return $post;
     }
 
 }

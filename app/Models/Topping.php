@@ -5,14 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Topping extends Model
 {
     use HasFactory;
-
-    protected $guarded = [];
-
-    public function topping()
-    {
-        return $this->belongsTo(Topping::class);
-    }
 }

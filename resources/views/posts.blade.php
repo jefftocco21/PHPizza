@@ -6,8 +6,13 @@
                 {{ $post->title }}
             </a>
         </h1>
+
+        <p>
+            <a href="#">{{$post->topping->name}}</a>
+        </p>
+
         <div>
-            {!!$post->body!!}
+            {{$post->excerpt}}
         </div>
     </article>
     @endforeach

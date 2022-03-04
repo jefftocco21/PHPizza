@@ -8,7 +8,7 @@
         </h1>
 
         <p>
-            <a href="#">{{$post->topping->name}}</a>
+            <a href="/toppings/{{$post->topping->slug}}">{{$post->topping->name}}</a>
         </p>
 
         <div>

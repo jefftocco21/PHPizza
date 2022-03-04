@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use App\Models\Post;
+use App\Models\Topping;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,12 @@ Route::get('posts/{post:slug}', function (Post $post) {
     return view('post', [
         'post' => $post
     ]);
+ });
+
+ Route::get('toppings/{topping:slug}', function (Topping $topping){
+     return view('posts', [
+         'posts' => $topping->posts
+     ]);
  });
 
 require __DIR__.'/auth.php';

@@ -22,7 +22,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/', function(){
      return view('posts',[
-        'posts' => Post::all()
+        'posts' => Post::with('topping')->get()
     ]);
 });
 

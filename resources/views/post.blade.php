@@ -2,7 +2,7 @@
     <article class="container mx-auto">
         <h1>{!!$post->title!!}</h1>
         <p>
-            <a href="/toppings/{{$post->topping->slug}}">{{$post->topping->name}}</a>
+            By <a href="#">{{$post->user->name}}</a> in <a href="/toppings/{{$post->topping->slug}}">{{$post->topping->name}}</a>
         </p>
         <div>
             {!! $post->body; !!}

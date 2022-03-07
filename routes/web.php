@@ -23,25 +23,29 @@ Route::get('/dashboard', function () {
 
 Route::get('/', function(){
      return view('posts',[
-        'posts' => Post::latest()->with('topping', 'author')->get()
+        'posts' => Post::latest()->with('topping', 'author')->get(),
+        'toppings'=> Topping::all()
     ]);
 });
 
 Route::get('posts/{post:slug}', function (Post $post) {
     return view('post', [
-        'post' => $post
+        'post' => $post,
     ]);
  });
 
  Route::get('toppings/{topping:slug}', function (Topping $topping){
      return view('posts', [
-         'posts' => $topping->posts->load(['topping', 'author'])
+         'posts' => $topping->posts->load(['topping', 'author']),
+         'currentTopping' => $topping,
+         'toppings' => Topping::all()
      ]);
  });
 
  Route::get('authors/{author:username}', function (User $author){
     return view('posts', [
-        'posts' => $author->posts->load(['topping', 'author'])
+        'posts' => $author->posts->load(['topping', 'author']),
+        'toppings' => Topping::all()
     ]);
 });
 

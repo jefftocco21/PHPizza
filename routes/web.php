@@ -35,13 +35,13 @@ Route::get('posts/{post:slug}', function (Post $post) {
 
  Route::get('toppings/{topping:slug}', function (Topping $topping){
      return view('posts', [
-         'posts' => $topping->posts
+         'posts' => $topping->posts->load(['topping', 'author'])
      ]);
  });
 
  Route::get('authors/{author:username}', function (User $author){
     return view('posts', [
-        'posts' => $author->posts
+        'posts' => $author->posts->load(['topping', 'author'])
     ]);
 });
 

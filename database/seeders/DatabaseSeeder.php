@@ -22,20 +22,28 @@ class DatabaseSeeder extends Seeder
         Topping::truncate();
         Post::truncate();
 
-        $user = User::factory()->create();
-
-        $buffalo = Topping::create([
-            'name' => 'Buffalo Chicken',
-            'slug' => 'buffalo-chicken'
+        $user = User::factory()->create([
+            'name' => 'Jeff Tocco'
         ]);
 
-        Post::create([
-            'user_id' => $user->id,
-            'topping_id' => $buffalo->id,
-            'title' => "Lindo's Pizza",
-            'slug' => "Lindo's-pizza",
-            'excerpt' => '<p>An okay experience.</p>',
-            'body' => "<p>Lindo's Buffalo Chicken left a to be desired.</p>",
+        Post::factory(5)->create([
+            'user_id' => $user
         ]);
+
+        // $user = User::factory()->create();
+
+        // $buffalo = Topping::create([
+        //     'name' => 'Buffalo Chicken',
+        //     'slug' => 'buffalo-chicken'
+        // ]);
+
+        // Post::create([
+        //     'user_id' => $user->id,
+        //     'topping_id' => $buffalo->id,
+        //     'title' => "Lindo's Pizza",
+        //     'slug' => "Lindo's-pizza",
+        //     'excerpt' => '<p>An okay experience.</p>',
+        //     'body' => "<p>Lindo's Buffalo Chicken left a to be desired.</p>",
+        // ]);
     }
 }

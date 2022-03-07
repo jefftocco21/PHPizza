@@ -26,7 +26,7 @@ Route::get('/', function(){
         'posts' => Post::latest()->with('topping', 'author')->get(),
         'toppings'=> Topping::all()
     ]);
-});
+})->name('home');
 
 Route::get('posts/{post:slug}', function (Post $post) {
     return view('post', [
@@ -40,7 +40,7 @@ Route::get('posts/{post:slug}', function (Post $post) {
          'currentTopping' => $topping,
          'toppings' => Topping::all()
      ]);
- });
+ })->name('topping');
 
  Route::get('authors/{author:username}', function (User $author){
     return view('posts', [

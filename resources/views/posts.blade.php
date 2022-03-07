@@ -8,7 +8,7 @@
         </h1>
 
         <p>
-            <a href="/toppings/{{$post->topping->slug}}">{{$post->topping->name}}</a>
+            By <a href="/authors/{{$post->author->username}}">{{$post->author->name}}</a> in <a href="/toppings/{{$post->topping->slug}}">{{$post->topping->name}}</a>
         </p>
 
         <div>

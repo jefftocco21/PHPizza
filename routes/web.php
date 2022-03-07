@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use App\Models\Post;
 use App\Models\Topping;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/', function(){
      return view('posts',[
-        'posts' => Post::with('topping')->get()
+        'posts' => Post::latest()->with('topping', 'author')->get()
     ]);
 });
 
@@ -37,5 +38,12 @@ Route::get('posts/{post:slug}', function (Post $post) {
          'posts' => $topping->posts
      ]);
  });
+
+ Route::get('authors/{author:username}', function (User $author){
+    return view('posts', [
+        'posts' => $author->posts
+    ]);
+});
+
 
 require __DIR__.'/auth.php';

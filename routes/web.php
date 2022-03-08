@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use App\Models\Post;
@@ -21,18 +22,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/', function(){
-     return view('posts',[
-        'posts' => Post::latest()->with('topping', 'author')->get(),
-        'toppings'=> Topping::all()
-    ]);
-})->name('home');
-
-Route::get('posts/{post:slug}', function (Post $post) {
-    return view('post', [
-        'post' => $post,
-    ]);
- });
+//Route to controller provide full path then action/method to be triggered
+Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
  Route::get('toppings/{topping:slug}', function (Topping $topping){
      return view('posts', [

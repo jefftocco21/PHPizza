@@ -18,8 +18,9 @@ class PostController extends Controller
         }
 
          return view('posts',[
-            'posts' => Post::latest()->filter(request(['search']))->get(),
-            'toppings'=> Topping::all()
+            'posts' => Post::latest()->filter(request(['search', 'topping']))->get(),
+            'toppings'=> Topping::all(),
+            'currentTopping' => Topping::firstWhere('slug', request('topping'))
         ]);
     }
 

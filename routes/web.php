@@ -26,13 +26,13 @@ Route::get('/dashboard', function () {
 Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
- Route::get('toppings/{topping:slug}', function (Topping $topping){
-     return view('posts', [
-         'posts' => $topping->posts->load(['topping', 'author']),
-         'currentTopping' => $topping,
-         'toppings' => Topping::all()
-     ]);
- })->name('topping');
+//  Route::get('toppings/{topping:slug}', function (Topping $topping){
+//      return view('posts', [
+//          'posts' => $topping->posts->load(['topping', 'author']),
+//          'currentTopping' => $topping,
+//          'toppings' => Topping::all()
+//      ]);
+//  })->name('topping');
 
  Route::get('authors/{author:username}', function (User $author){
     return view('posts', [

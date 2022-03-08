@@ -20,7 +20,7 @@
 
                 <!--bind the display of this div to the truth value of the x-data div -->
                 @foreach ($toppings as $topping)
-                    <x-custom-drop-item href="/toppings/{{ $topping->slug }}"
+                    <x-custom-drop-item href="/?topping={{ $topping->slug }}"
                         :active='request()->is("toppings/{$topping->slug}")'>{{ ucwords($topping->name) }}
                     </x-custom-drop-item>
                 @endforeach

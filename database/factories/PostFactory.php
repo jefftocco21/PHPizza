@@ -24,8 +24,8 @@ class PostFactory extends Factory
             'topping_id' => Topping::factory(),
             'title' => $this->faker->sentence(),
             'slug' => $this->faker->slug(),
-            'excerpt' => $this->faker->sentence(),
-            'body' => $this->faker->paragraph()
+            'body' => '<p>' . implode('</p><p>', $this->faker->paragraphs(6)) . '</p>',
+            'excerpt' => '<p>' . implode('</p><p>', $this->faker->paragraphs(2)) . '</p>',
         ];
     }
 }

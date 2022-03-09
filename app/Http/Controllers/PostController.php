@@ -17,16 +17,14 @@ class PostController extends Controller
                 ->orWhere('body', 'like', '%' . request('search') . '%');
         }
 
-         return view('posts',[
-            'posts' => Post::latest()->filter(request(['search', 'topping']))->get(),
-            'toppings'=> Topping::all(),
-            'currentTopping' => Topping::firstWhere('slug', request('topping'))
+         return view('posts.index',[
+            'posts' => Post::latest()->filter(request(['search', 'topping']))->get()
         ]);
     }
 
     public function show(Post $post)
     {
-        return view('post', [
+        return view('post.show', [
             'post' => $post,
         ]);
     }

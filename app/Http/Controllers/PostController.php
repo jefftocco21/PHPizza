@@ -18,13 +18,13 @@ class PostController extends Controller
         }
 
          return view('posts.index',[
-            'posts' => Post::latest()->filter(request(['search', 'topping']))->get()
+            'posts' => Post::latest()->filter(request(['search', 'topping', 'author']))->get()
         ]);
     }
 
     public function show(Post $post)
     {
-        return view('post.show', [
+        return view('posts.show', [
             'post' => $post,
         ]);
     }

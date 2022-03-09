@@ -31,6 +31,12 @@ class Post extends Model
                 $query->where('slug', $topping)
             )
         );
+
+        $query->when($filters['author'] ?? false, fn($query, $author)=>
+        $query->whereHas('author', fn($query)=>
+            $query->where('username', $author)
+        )
+    );
     }
 
 }

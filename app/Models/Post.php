@@ -22,21 +22,29 @@ class Post extends Model
 
     public function scopeFilter($query, array $filters)
     {
-        $query->when($filters['search'] ?? false, fn($query, $search)=>
-            $query
-                ->where('title', 'like', '%' . $search . '%')->orWhere('body', 'like', '%' . $search . '%'));
+        $query->when($filters['search'] ?? false, fn ($query, $search) =>
+        $query->where(fn ($query) =>
+        $query->where('title', 'like', '%' . $search . '%')
+            ->orWhere('body', 'like', '%' . $search . '%')));
 
-        $query->when($filters['topping'] ?? false, fn($query, $topping)=>
-            $query->whereHas('topping', fn($query)=>
+        $query->when(
+            $filters['topping'] ?? false,
+            fn ($query, $topping) =>
+            $query->whereHas(
+                'topping',
+                fn ($query) =>
                 $query->where('slug', $topping)
             )
         );
 
-        $query->when($filters['author'] ?? false, fn($query, $author)=>
-        $query->whereHas('author', fn($query)=>
-            $query->where('username', $author)
-        )
-    );
+        $query->when(
+            $filters['author'] ?? false,
+            fn ($query, $author) =>
+            $query->whereHas(
+                'author',
+                fn ($query) =>
+                $query->where('username', $author)
+            )
+        );
     }
-
 }

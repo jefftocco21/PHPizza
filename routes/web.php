@@ -22,6 +22,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/navtest', function() {
+    return view('navtest');
+})->middleware(['auth'])->name('navtest');
+
 //Route to controller provide full path then action/method to be triggered
 Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
